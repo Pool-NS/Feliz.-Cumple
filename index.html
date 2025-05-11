@@ -1,51 +1,108 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>¡Feliz cumpleaños, Mi amo olll  Mi
-      Niña Hermosa te quiero mucho, espero lo pase bonito el día de hoy
-      !</title>
+    <title>¡Feliz cumple Olll Vea!</title>
     <style>
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Comic Sans MS', cursive;
             text-align: center;
-            background-color: #fff0f5;
+            background: #ffebee;
             padding: 20px;
-            color: #d6336c;
         }
         h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px 4px #ffb6c1;
+            color: #d32f2f;
+            font-size: 2.5em;
         }
-        p {
-            font-size: 1.5em;
-            margin: 15px;
+        .screen {
+            display: none;
+            margin: 20px auto;
+            max-width: 90%;
         }
-        .chopper-gif {
+        .active {
+            display: block;
+        }
+        button {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            background: #d81b60;
+        }
+        .gif {
             max-width: 300px;
             border-radius: 20px;
-            box-shadow: 0 0 15px #ff69b4;
             margin: 20px auto;
+            border: 5px solid #fff;
+            box-shadow: 0 0 15px #ff69b4;
         }
-        .balloon {
-            font-size: 2em;
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        .message {
+            font-size: 1.5em;
+            margin: 20px;
+            color: #5d4037;
         }
     </style>
 </head>
 <body>
-    <div class="balloon">🎈</div>
-    <h1>¡Feliz cumpleaños, Olll Vea! 🎉</h1>
-    <p>Espero que la pases súper bonito, lleno de alegría y buenos momentos. 🥳</p>
-    <p>¡Que todos tus sueños se hagan realidad! ✨</p>
+    <!-- Pantalla 1: Inicio -->
+    <div id="screen1" class="screen active">
+        <h1>🎉 ¡Feliz cumpleaños, Mi Amooolll Bea! 🎂</h1>
+        <p class="message">¿Listo para tu sorpresa?</p>
+        <img class="gif" src="https://media.giphy.com/media/l0HU7jj0ivEFyZIA0/giphy.gif" alt="Chopper emocionado">
+        <button onclick="nextScreen(1)">¡Dale Click! 🎁</button>
+    </div>
+
+    <!-- Pantalla 2: Besos -->
+    <div id="screen2" class="screen">
+        <h1>😘 ¡Mándale besos! 💋</h1>
+        <p class="message">¡Aquí tienes un montón de besos para ti!</p>
+        <img class="gif" src="https://media.giphy.com/media/3o7TKMt1VV26b9pyUM/giphy.gif" alt="Chopper enviando besos">
+        <button onclick="nextScreen(2)">Siguiente sorpresa 🎈</button>
+    </div>
+
+    <!-- Pantalla 3: Te amo -->
+    <div id="screen3" class="screen">
+        <h1>💖 ¡Te amo! 💖</h1>
+        <p class="message">Espero que la pases increíble hoy y siempre.</p>
+        <img class="gif" src="https://media.giphy.com/media/3o7TKsQ8LUKJngSnU4/giphy.gif" alt="Chopper corazón">
+        <button onclick="nextScreen(3)">¡Ver más! 🌟</button>
+    </div>
+
+    <!-- Pantalla 4: Final -->
+    <div id="screen4" class="screen">
+        <h1>✨ ¡Que cumplas muchos más! ✨</h1>
+        <p class="message">Con cariño, [Tu nombre] ❤️</p>
+        <img class="gif" src="https://media.giphy.com/media/3o7TKsQ8LUKJngSnU4/giphy.gif" alt="Chopper celebrando">
+        <button onclick="nextScreen(0)">🎂 Volver al inicio</button>
+    </div>
+
+    <script>
+        function nextScreen(current) {
+            document.getElementById(`screen${current}`).classList.remove('active');
+            let next = current + 1;
+            if (next > 4) next = 1;
+            document.getElementById(`screen${next}`).classList.add('active');
+        }
+        
+        // Efecto de confeti al inicio
+        window.onload = function() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        };
+    </script>
     
-    <img class="chopper-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcW5tYjY4dGxqY3B2Z2VjY3R5ZzJtY2JtY3BqZ2ZqZ2ZqZ2ZqZ2ZqZ2ZqZ2ZqZ2ZqZw/giphy.gif" alt="Chopper celebrando">
-    <!-- GIF alternativo de Chopper: https://media.giphy.com/media/l0HU7jj0ivEFyZIA0/giphy.gif -->
-    
-    <p>Con cariño, <br> [Tu enamorado :'3] ❤️</p>
-    <div class="balloon">🎈</div>
+    <!-- Librería de confeti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1"></script>
 </body>
 </html>
